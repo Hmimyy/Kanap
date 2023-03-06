@@ -5,6 +5,7 @@ let tableauLocalStorage = getFromLocalStorage();
 let tableauResult = [];
 loadData();
 
+//chargement des données
 function loadData() {
   let counter = 0;
   tableauLocalStorage.forEach(element => {
@@ -102,6 +103,7 @@ function createProduct(product) {
     }
     alert('Votre article a bien été mis à jour sur votre panier !');
     calculateTotaux();
+    location.reload();
   }
   );
   divContentSettingsQuantity.appendChild(inputSettingsQuantity);
@@ -137,6 +139,7 @@ function createProduct(product) {
 
 }
 
+//Affichage du recapitulatif des produits saisis
 function displayProducts() {
 
   const sectionCartItems = document.getElementById("cart__items");
@@ -187,8 +190,7 @@ function removeFromCart(id, color) {
   setLocalStorage(tableauLocalStorage);
 
 }
-
-
+//calcul du total des produits
 function calculateTotaux() {
   let totalQty = 0;
   let totalPrice = 0;
@@ -200,12 +202,9 @@ function calculateTotaux() {
   document.getElementById("totalQuantity").textContent = totalQty;
   document.getElementById("totalPrice").textContent = totalPrice;
 }
-
-
+// ************ Gestion du formulaire de commande ************
 function gestionFormulaire() {
 
-   
-// ************ Gestion du formulaire de commande ************
 // Gestion de la validation des champs du formulaire
 const form = document.querySelector('.cart__order__form');
 
@@ -257,6 +256,8 @@ form.addEventListener('submit', e => {
 });
 
 }
+
+//validation du Prénom et Nom
   function nameValid(input, name) {
     console.log(input);
     console.log(input.nextElementSibling);
@@ -278,7 +279,7 @@ form.addEventListener('submit', e => {
       return false;
     }
   }
-
+//validation de l'adresse
   function addressValid(input) {
     
     const regex= /^[a-z\éèàêâîiïù\d\-' ]{5,50}$/i;
@@ -294,7 +295,7 @@ form.addEventListener('submit', e => {
       return false;
     }
   }
-
+//validation de la ville
   function cityValid(input) {
     
     const regex= /^[a-z\éèàêâîiïù\-' ]{1,30}$/i;
@@ -310,7 +311,7 @@ form.addEventListener('submit', e => {
       return false;
     }
   }
- 
+ //validation de l'email
   function emailValid(input) {
     
     const regex= /^([a-z\d\._-]+)@([a-z\d_-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/i;
@@ -326,7 +327,7 @@ form.addEventListener('submit', e => {
       return false;
     }
   }
-
+//Envoie de la commande
   function envoiCommande() {
    
       // Création de l'objet contact

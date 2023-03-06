@@ -30,6 +30,7 @@ displayProduct(article);
     alert("Une erreur est survenue Veuillez contacter l'administrateur du site!!");
 });
 
+//Affichage des produits dans le DOM
 function displayProduct(product){
 
         // preparer les details à afficher
@@ -116,7 +117,5 @@ let tableauLocalStorage = getFromLocalStorage();
   
   }
  });
-
-        ///////////////
 }
 
